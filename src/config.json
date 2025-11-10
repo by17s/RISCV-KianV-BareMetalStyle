@@ -36,5 +36,5 @@
   "DONT_USE_CELLS": [
     "sky130_fd_sc_hd__xor*",
     "sky130_fd_sc_hd__xnor*"
-  ],
+  ]
 }
