@@ -34,10 +34,10 @@ module register_file #(
 
   always @(posedge clk) begin
     if (we && A3 != 0) begin
-      bank0[A3] <= wd;
+      bank0[A3[3:0]] <= wd;
     end
   end
 
-  assign rd1 = A1 != 0 ? bank0[A1] : 0;
-  assign rd2 = A2 != 0 ? bank0[A2] : 0;
+  assign rd1 = A1 != 0 ? bank0[A1[3:0]] : 0;
+  assign rd2 = A2 != 0 ? bank0[A2[3:0]] : 0;
 endmodule
