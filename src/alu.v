@@ -1,3 +1,4 @@
+
 /*
  *  kianv harris multicycle RISC-V rv32im
  *
@@ -60,7 +61,7 @@ module alu (
   // seen 33 Bit sum from Bruno's Levy
   // with that approach I could map all branch to LT, LTU
   wire [32:0] sum = {1'b1, condinv} + {1'b0, a} + {32'b0, is_sub};
-    wire LT = (a[31] & ~b[31]) | (~a[31] & b[31]) ? a[31] : sum[32];
+  wire LT = (a[31] ^ b[31]) ? a[31] : sum[32];
   wire LTU = sum[32];
 
   wire [31:0] sltx_sltux_rslt = {31'b0, is_slt_slti ? LT : LTU};
@@ -87,7 +88,7 @@ module alu (
     case (alucontrol)
       `ALU_CTRL_ADD_ADDI:   result = sum[31:0];
       `ALU_CTRL_SUB:        result = sum[31:0];
-      `ALU_CTRL_XOR_XORI:   result = (a & ~b) | (~a & b);
+      `ALU_CTRL_XOR_XORI:   result = a ^ b;
       `ALU_CTRL_OR_ORI:     result = a | b;
       `ALU_CTRL_AND_ANDI:   result = a & b;
 `ifndef CYCLE_BASED_SHIFTER
