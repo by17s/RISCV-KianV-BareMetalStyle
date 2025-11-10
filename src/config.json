@@ -31,5 +31,10 @@
 
   "//": "Power nets for IR drop analysis",
   "PWR_NETS_VOLTAGES": "{VPWR 1.2}",
-  "GND_NETS_VOLTAGES": "{VGND 0.0}"
+  "GND_NETS_VOLTAGES": "{VGND 0.0}",
+
+  "DONT_USE_CELLS": [
+    "sky130_fd_sc_hd__xor*",
+    "sky130_fd_sc_hd__xnor*"
+  ],
 }
