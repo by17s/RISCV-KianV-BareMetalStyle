@@ -37,7 +37,7 @@ module xor_cell (
     output wire out
 );
 
-  assign out = a ^ b;
+  assign out = (a & ~b) | (~a & b);
 endmodule
 
 module nand_cell (
